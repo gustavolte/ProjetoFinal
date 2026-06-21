@@ -1,0 +1,27 @@
+# Quartus II gerados automaticamente
+db/
+incremental_db/
+output_files/
+simulation/
+*.rpt
+*.smsg
+*.summary
+*.done
+*.pin
+*.flow.rpt
+*.map.rpt
+*.fit.rpt
+*.asm.rpt
+*.sta.rpt
+*.eda.rpt
+*.qws
+*.bak
+*.sopcinfo
+greybox_tmp/
+
+# Arquivos de backup
+*.bak
+
+# Arquivos temporários do sistema
+.DS_Store
+Thumbs.db
