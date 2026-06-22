@@ -79,18 +79,18 @@ architecture behav of ProjetoFinal is
 	 end component;
     
     begin
-		uregida:   reg4 port map (c => clk, reset => reset, ld => idaLd,   clr => idaclr,   s => Addida, q => Regida);
-		uregvolta: reg4 port map (c => clk, reset => reset, ld => voltald, clr => voltaclr, s => Addvolta, q => RegVolta);
-		uregtemp:  reg4 port map (c => clk, reset => reset, ld => templd,  clr => tempclr,  s => Addtemp,  q => Regtemp);
-		uregvf:  reg4 port map (c => clk, reset => reset, ld => VFLoad,  clr => VFClr,  s => subtrator1, q => VacasFicaram);
-		uregvnv: reg4 port map (c => clk, reset => reset, ld => VNVLoad, clr => VNVClr, s => subtrator2, q => VacasNaoVoltaram);
+		uregida:   reg4 port map (c => not clk, reset =>  reset, ld => idaLd,   clr => idaclr,   s => Addida, q => Regida);
+		uregvolta: reg4 port map (c => not clk, reset =>  reset, ld => voltald, clr => voltaclr, s => Addvolta, q => RegVolta);
+		uregtemp:  reg4 port map (c => not clk, reset =>  reset, ld => templd,  clr => tempclr,  s => Addtemp,  q => Regtemp);
+		uregvf:  reg4 port map (c => not clk, reset =>  reset, ld => VFLoad,  clr => VFClr,  s => subtrator1, q => VacasFicaram);
+		uregvnv: reg4 port map (c => not clk, reset =>  reset, ld => VNVLoad, clr => VNVClr, s => subtrator2, q => VacasNaoVoltaram);
 		
 		c0 : controlador port map(
-											clk => clk, led => Led, a2 => a2, a1 => a1, a0 => a0, botao => botao, ida => ida, volta => volta, t => t,
+											clk =>  not clk, led => Led, a2 => a2, a1 => a1, a0 => a0, botao => botao, ida => ida, volta => volta, t => t,
 											eq => eq, n2 => n2, n1 => n1, n0 => n0, idaLd => idaLd, idaclr => idaclr, voltald => voltald, voltaclr => voltaclr,
 											templd => templd, tempclr => tempclr, VFload => VFload, VFclr => VFclr, VNVLoad => VNVLoad, VNVClr => VNVClr);
 		
-		c1 : reg3 port map(clk => clk, reset => reset, a2 => n2, a1 => n1, a0 =>n0, n2 => a2, n1 => a1, n0 => a0);
+		c1 : reg3 port map(clk => not clk, reset => reset, a2 => n2, a1 => n1, a0 =>n0, n2 => a2, n1 => a1, n0 => a0);
 		
 		
 		comptemp1 : comp port map(a => temp(3), b => Regtemp(3), in_maior => '0' , in_igual => '1', in_menor => '0', out_maior => gtcomp(2), out_igual => eqcomp(2), out_menor => ltcomp(2));
