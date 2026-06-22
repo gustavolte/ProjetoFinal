@@ -14,13 +14,14 @@ simulation/
 *.asm.rpt
 *.sta.rpt
 *.eda.rpt
-*.qws
-*.bak
 *.sopcinfo
 greybox_tmp/
 
-# Arquivos de backup
+# Arquivos de backup do Quartus
 *.bak
+
+# Arquivos de workspace do Quartus
+*.qws
 
 # Arquivos temporários do sistema
 .DS_Store
